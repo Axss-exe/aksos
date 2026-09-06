@@ -1,11 +1,13 @@
 import Link from 'next/link'
 
 const NAV_ITEMS = [
+  { label: 'About', href: '/about' },
   { label: 'ATIS', href: '/atis' },
   { label: 'RITA', href: '/rita' },
   { label: 'Provenance', href: '/#provenance' },
   { label: 'Zimbabwe', href: '/#zimbabwe' },
   { label: 'Horizon', href: '/#horizon' },
+  { label: 'Batana', href: '/#batana' },
 ]
 
 export function SiteHeader() {

@@ -12,15 +12,13 @@ export function HeroSection() {
 
       <div className="relative mx-auto w-full max-w-6xl px-6 py-24">
         <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted-foreground">
-          AKSOS — Operating Environment
+          AKSOS / RESEARCHING CONNECTED INTELLIGENCE
         </p>
         <h1 className="mt-8 max-w-3xl text-balance font-serif text-5xl font-light leading-[1.08] text-foreground sm:text-6xl md:text-7xl">
-          The infrastructure beneath intelligence.
+          WHAT&apos;S BENEATH COMPLEXITY?
         </h1>
         <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-          AKSOS is the operating system for institutions that need to know what is true, where
-          it came from, and who else is looking at it. ATIS is where that work becomes visible.
-          RITA is what keeps it honest underneath.
+          There is rarely a shortage of information. The difficult part is understanding what belongs together. A company announces an investment. A regulation changes. A ministry publishes a decision. A bank finances a project. A new supplier appears. A market responds. Each event can be understood on its own. The more difficult question is what becomes visible when they are understood together. AKSOS is researching what becomes possible when those relationships are made visible.
         </p>
 
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">

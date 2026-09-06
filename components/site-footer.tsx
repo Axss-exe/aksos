@@ -28,6 +28,9 @@ export function SiteFooter() {
             </div>
             <div className="flex flex-col gap-3">
               <span className="text-foreground/70">Site</span>
+              <Link href="/about" className="hover:text-foreground">
+                About
+              </Link>
               <Link href="/#provenance" className="hover:text-foreground">
                 Provenance
               </Link>

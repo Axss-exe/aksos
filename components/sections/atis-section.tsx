@@ -27,7 +27,7 @@ export function AtisSection() {
             <SectionLabel index="01" label="ATIS" />
             <Reveal delay={100}>
               <h2 className="mt-6 text-balance font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
-                The platform where AKSOS becomes visible.
+                WHAT IS CONNECTED?
               </h2>
             </Reveal>
             <Reveal delay={200}>
@@ -39,7 +39,7 @@ export function AtisSection() {
             </Reveal>
             <Reveal delay={300}>
               <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                It is a live product, not a demo environment for AKSOS — running at{' '}
+                ATIS is not intended to collect more information for its own sake. It is being built to make it easier to investigate what the information means when the pieces are considered together. Running at{' '}
                 <span className="font-mono text-foreground">atis.aksos.net</span>.
               </p>
             </Reveal>
