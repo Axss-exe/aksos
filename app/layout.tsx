@@ -23,12 +23,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-dark-32x32.png',
+        url: '/aksos-symbol.svg',
         media: '(prefers-color-scheme: light)',
         type: 'image/png',
       },
       {
-        url: '/icon-light-32x32.png',
+        url: '/aksos-symbol.svg',
         media: '(prefers-color-scheme: dark)',
         type: 'image/png',
       },
