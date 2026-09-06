@@ -16,9 +16,9 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'AKSOS — The infrastructure beneath intelligence',
+  title: 'AKSOS — See the environment. Participate in it.',
   description:
-    'AKSOS builds the operating environment for institutional intelligence — provenance, perspective, and participation, made durable. ATIS is where it becomes visible.',
+    'AKSOS researches and prototypes systems that make complex environments easier to see, understand and participate in.',
   generator: 'v0.app',
   icons: {
     icon: [
