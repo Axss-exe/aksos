@@ -1,10 +1,25 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { IBM_Plex_Mono, Newsreader } from 'next/font/google'
 import './globals.css'
 
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-serif',
+  style: ['normal', 'italic'],
+  weight: ['300', '400', '500', '600'],
+})
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500'],
+})
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'AKSOS — The infrastructure beneath intelligence',
+  description:
+    'AKSOS builds the operating environment for institutional intelligence — provenance, perspective, and participation, made durable. ATIS is where it becomes visible.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -26,11 +41,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light dark',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
-  ],
+  colorScheme: 'dark',
+  themeColor: '#0a0a0a',
 }
 
 export default function RootLayout({
@@ -39,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`dark bg-background ${newsreader.variable} ${plexMono.variable}`}>
+      <body className="antialiased font-serif">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
