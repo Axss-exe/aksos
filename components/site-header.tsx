@@ -6,6 +6,7 @@ const NAV_ITEMS = [
   { label: 'Provenance', href: '/#provenance' },
   { label: 'Zimbabwe', href: '/#zimbabwe' },
   { label: 'Horizon', href: '/#horizon' },
+  { label: 'Batana', href: '/#batana' },
 ]
 
 export function SiteHeader() {

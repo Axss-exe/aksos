@@ -31,7 +31,7 @@ export function ClosingSection() {
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
         <Reveal>
           <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted-foreground">
-            08 — Entry
+            09 — Entry
           </p>
         </Reveal>
         <Reveal delay={100}>

@@ -26,15 +26,20 @@ export async function submitParticipationRequest(
     return { ok: false, error: 'Message is too long.' }
   }
 
-  const notifyTo = 'connect@aksos.net'
+  const apiKey = process.env.RESEND_API_KEY
+  const emailDomain = process.env.RESEND_EMAIL_DOMAIN
+
+  if (!apiKey || !emailDomain) {
+    return { ok: false, error: 'Messaging is temporarily unavailable. Please try again later.' }
+  }
 
   try {
-    if (process.env.RESEND_API_KEY) {
-      const { Resend } = await import('resend')
-      const resend = new Resend(process.env.RESEND_API_KEY)
-      const { error } = await resend.emails.send({
-        from: 'AKSOS <onboarding@resend.dev>',
-        to: notifyTo,
+    const { Resend } = await import('resend')
+    const resend = new Resend(apiKey)
+    const { error } = await resend.emails.send(
+      {
+        from: `AKSOS <hello@${emailDomain}>`,
+        to: 'connect@aksos.net',
         replyTo: email,
         subject: `Participation request — ${organization || name}`,
         text: [
@@ -45,27 +50,16 @@ export async function submitParticipationRequest(
           '',
           message,
         ].join('\n'),
-      })
+      },
+      { idempotencyKey: `participation-request/${crypto.randomUUID()}` },
+    )
 
-      if (error) {
-        console.log('[v0] Resend send error:', error)
-        return { ok: false, error: 'Could not send your message. Please try again.' }
-      }
-    } else {
-      // Resend is not connected yet — log so the submission is not silently lost
-      // during development, without blocking the user-facing flow.
-      console.log('[v0] Participation request received (Resend not configured):', {
-        name,
-        email,
-        organization,
-        interest,
-        message,
-      })
+    if (error) {
+      return { ok: false, error: 'Could not send your message. Please try again.' }
     }
 
     return { ok: true }
-  } catch (err) {
-    console.log('[v0] Participation submission failed:', err)
+  } catch {
     return { ok: false, error: 'Something went wrong. Please try again.' }
   }
 }
