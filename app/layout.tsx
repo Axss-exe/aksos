@@ -1,13 +1,12 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { IBM_Plex_Mono, Newsreader } from 'next/font/google'
+import { IBM_Plex_Mono, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
-const newsreader = Newsreader({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-serif',
-  style: ['normal', 'italic'],
-  weight: ['300', '400', '500', '600'],
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700'],
 })
 
 const plexMono = IBM_Plex_Mono({
@@ -51,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`dark bg-background ${newsreader.variable} ${plexMono.variable}`}>
-      <body className="antialiased font-serif">
+    <html lang="en" className={`dark bg-background ${spaceGrotesk.variable} ${plexMono.variable}`}>
+      <body className="antialiased font-sans">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
