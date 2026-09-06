@@ -1,5 +1,6 @@
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { AtisInvestigation } from '@/components/atis-investigation'
 import { Reveal } from '@/components/reveal'
 import { TracedMark } from '@/components/visuals/traced-mark'
 import type { Metadata } from 'next'
@@ -74,6 +75,8 @@ export default function AtisPage() {
             </div>
           </div>
         </section>
+
+        <AtisInvestigation />
 
         <section className="border-b border-border/60 bg-card/40">
           <div className="mx-auto max-w-6xl px-6 py-24 md:py-32">
