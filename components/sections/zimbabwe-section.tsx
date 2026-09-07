@@ -46,7 +46,7 @@ export function ZimbabweSection() {
               href="/research"
               className="mt-8 inline-flex font-mono text-[11px] uppercase tracking-[0.18em] text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
             >
-              Explore Frontier research
+              Explore the Frontier case study
             </Link>
 
             <div className="mt-10 border-t border-border/60 pt-6">

@@ -32,6 +32,23 @@ export function ResearchIndex() {
           </div>
         </section>
         <section className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 py-20 md:px-10">
+            <div className="grid gap-10 border border-border p-7 md:grid-cols-[0.8fr_1.2fr] md:p-10">
+              <div>
+                <FrontierLabel>Case study / applied intelligence</FrontierLabel>
+                <h2 className="mt-5 max-w-md font-serif text-3xl leading-tight tracking-[-0.03em] md:text-4xl">From the AKSOS front page to a research question.</h2>
+              </div>
+              <div>
+                <p className="max-w-2xl text-lg leading-8 text-muted-foreground">The Zimbabwe case study shows how a live use case becomes a source-backed investigation: national AI strategy, continental alignment, and the conditions that turn information into participation.</p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link href="/#zimbabwe" className="border border-border px-4 py-3 font-mono text-[10px] uppercase tracking-[0.18em] hover:bg-muted/40">View front page use case</Link>
+                  <Link href="/research/zimbabwe-national-ai-strategy" className="border border-foreground bg-foreground px-4 py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-background hover:opacity-80">Read the Frontier case study</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="border-t border-border">
         <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-2 md:px-10">
           <div><p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Browse by topic</p><div className="mt-6 flex flex-wrap gap-3">{topics.map((topic) => <Link key={topic.id} href={`/topics/${topic.slug}`} className="border border-border px-4 py-3 text-sm hover:bg-muted/40">{topic.name}</Link>)}</div></div>
           <div><p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Browse by region</p><div className="mt-6 flex flex-wrap gap-3">{regions.map((region) => <Link key={region.id} href={`/regions/${region.slug}`} className="border border-border px-4 py-3 text-sm hover:bg-muted/40">{region.name}</Link>)}</div></div>

@@ -19,9 +19,16 @@ export function FrontierShell({ children }: { children: React.ReactNode }) {
             <span className="h-5 w-px bg-border" aria-hidden="true" />
             <span className="font-mono text-xs tracking-[0.2em] text-muted-foreground">FRONTIER</span>
           </Link>
-          <p className="hidden max-w-xs text-right font-mono text-[10px] uppercase leading-5 tracking-[0.16em] text-muted-foreground md:block">
-            A research environment for understanding change.
-          </p>
+          <div className="flex items-start gap-5">
+            <p className="hidden max-w-xs text-right font-mono text-[10px] uppercase leading-5 tracking-[0.16em] text-muted-foreground md:block">
+              A research environment for understanding change.
+            </p>
+            <img
+              src="/aksos-symbol.svg"
+              alt="AKSOS"
+              className="size-8 opacity-75"
+            />
+          </div>
         </div>
         <nav className="mx-auto flex max-w-7xl gap-6 overflow-x-auto px-6 pb-5 md:px-10" aria-label="FRONTIER navigation">
           {links.map(([label, href]) => <Link key={href} href={href} className="whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground transition-colors hover:text-foreground">{label}</Link>)}
