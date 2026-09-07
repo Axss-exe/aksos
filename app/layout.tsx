@@ -17,7 +17,7 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'AKSOS — See the environment. Participate in it.',
+  title: 'AKSOS',
   description:
     'AKSOS is an independent research and systems-building initiative founded by Tino Makiriyado, exploring how complex environments become easier to see, understand, and participate in.',
   metadataBase: new URL(SITE_URL),
@@ -26,27 +26,27 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     siteName: 'AKSOS',
-    title: 'AKSOS — See the environment. Participate in it.',
+    title: 'AKSOS',
     description: 'Independent research and systems-building for understanding complex environments.',
     url: SITE_URL,
   },
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/aksos-symbol.svg',
         media: '(prefers-color-scheme: light)',
         type: 'image/png',
         sizes: '32x32',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/aksos-symbol.svg',
         media: '(prefers-color-scheme: dark)',
         type: 'image/png',
         sizes: '32x32',
       },
     ],
     shortcut: '/icon-light-32x32.png',
-    apple: '/aksos-symbol.svg',
+    apple: 'ccc',
   },
 }
 
