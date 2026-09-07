@@ -22,9 +22,6 @@ export function SiteFooter() {
               <Link href="/atis" className="hover:text-foreground">
                 ATIS
               </Link>
-              <Link href="/rita" className="hover:text-foreground">
-                RITA
-              </Link>
               <Link href="/research" className="hover:text-foreground">
                 Frontier
               </Link>

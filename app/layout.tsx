@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { IBM_Plex_Mono, Space_Grotesk } from 'next/font/google'
 import './globals.css'
-import { SITE_URL } from '@/lib/site-config'
+import { SITE_URL, siteConfig } from '@/lib/site-config'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -17,9 +17,12 @@ const plexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'AKSOS — See the environment. Participate in it.',
-  description:
-    'AKSOS researches and builds systems that make complex environments easier to see, understand and participate in.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'AKSOS — Research, Technology & Understanding Complex Environments',
+    template: '%s | AKSOS',
+  },
+  description: siteConfig.description,
   generator: 'v0.app',
   icons: {
     icon: [
@@ -60,8 +63,28 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@graph': [
-                { '@type': 'Organization', name: 'AKSOS', url: SITE_URL },
-                { '@type': 'WebSite', name: 'AKSOS', url: SITE_URL, potentialAction: { '@type': 'SearchAction', target: `${SITE_URL}/research?q={search_term_string}`, 'query-input': 'required name=search_term_string' } },
+                {
+                  '@type': 'Organization',
+                  '@id': `${SITE_URL}/#organization`,
+                  name: siteConfig.name,
+                  url: SITE_URL,
+                  description: siteConfig.description,
+                  founder: { '@type': 'Person', name: siteConfig.founder.name },
+                },
+                {
+                  '@type': 'Person',
+                  '@id': `${SITE_URL}/about#tino-makiriyado`,
+                  name: siteConfig.founder.name,
+                  founderOf: { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: siteConfig.name },
+                  url: `${SITE_URL}/about`,
+                },
+                {
+                  '@type': 'WebSite',
+                  name: siteConfig.name,
+                  url: SITE_URL,
+                  publisher: { '@id': `${SITE_URL}/#organization` },
+                  potentialAction: { '@type': 'SearchAction', target: `${SITE_URL}/research?q={search_term_string}`, 'query-input': 'required name=search_term_string' },
+                },
               ],
             }),
           }}

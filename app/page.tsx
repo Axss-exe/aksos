@@ -1,7 +1,9 @@
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 import { HeroSection } from '@/components/sections/hero-section'
+import { IdentitySection } from '@/components/sections/identity-section'
 import { AtisSection } from '@/components/sections/atis-section'
+import { FrontierSection } from '@/components/sections/frontier-section'
 import { RitaSection } from '@/components/sections/rita-section'
 import { ProvenanceSection } from '@/components/sections/provenance-section'
 import { PerspectiveSection } from '@/components/sections/perspective-section'
@@ -17,7 +19,9 @@ export default function Page() {
       <SiteHeader />
       <main>
         <HeroSection />
+        <IdentitySection />
         <AtisSection />
+        <FrontierSection />
         <RitaSection />
         <ProvenanceSection />
         <PerspectiveSection />

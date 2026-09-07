@@ -8,7 +8,7 @@ export function ZimbabweSection() {
   return (
     <section id="zimbabwe" className="border-b border-border/60 bg-card/40">
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <SectionLabel index="06" label={zimbabweStory.label} />
+        <SectionLabel index="07" label={zimbabweStory.label} />
         <Reveal delay={100}>
           <h2 className="mt-6 max-w-3xl text-balance font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
             {zimbabweStory.headline}

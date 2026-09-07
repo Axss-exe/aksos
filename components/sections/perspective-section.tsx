@@ -7,7 +7,7 @@ export function PerspectiveSection() {
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:items-center">
           <div>
-            <SectionLabel index="04" label="Perspective" />
+            <SectionLabel index="05" label="Perspective" />
             <Reveal delay={100}>
               <h2 className="mt-6 text-balance font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
                 The same facts read differently from every seat.

@@ -12,7 +12,7 @@ export function ProvenanceSection() {
   return (
     <section id="provenance" className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <SectionLabel index="03" label="Provenance" />
+        <SectionLabel index="04" label="Provenance" />
         <Reveal delay={100}>
           <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
             An answer without a source is an opinion.

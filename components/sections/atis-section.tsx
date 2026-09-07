@@ -18,6 +18,8 @@ const CAPABILITIES = [
   },
 ]
 
+const FRAMEWORK = ['See', 'Understand', 'Orient', 'Decide']
+
 export function AtisSection() {
   return (
     <section id="atis" className="border-b border-border/60">
@@ -62,7 +64,21 @@ export function AtisSection() {
           </Reveal>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 gap-10 border-t border-border/60 pt-14 sm:grid-cols-3">
+        <Reveal delay={300}>
+          <div className="mt-16 flex flex-wrap items-center gap-4 border-t border-border/60 pt-10 font-mono text-[12px] uppercase tracking-[0.2em] text-muted-foreground">
+            {FRAMEWORK.map((step, i) => (
+              <span key={step} className="flex items-center gap-4">
+                {i > 0 && <span aria-hidden="true">→</span>}
+                <span className={i === FRAMEWORK.length - 1 ? 'text-foreground' : undefined}>{step}</span>
+              </span>
+            ))}
+          </div>
+          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
+            ATIS is designed to support understanding, not replace human judgment.
+          </p>
+        </Reveal>
+
+        <div className="mt-14 grid grid-cols-1 gap-10 border-t border-border/60 pt-14 sm:grid-cols-3">
           {CAPABILITIES.map((item, i) => (
             <Reveal key={item.title} delay={i * 120}>
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/70">

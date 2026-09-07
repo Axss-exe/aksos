@@ -7,7 +7,7 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'RITA — AKSOS',
   description:
-    'RITA is the Reasoning & Integrity layer that sits beneath ATIS inside the AKSOS operating environment.',
+    'RITA is the internal reasoning and integrity layer that sits beneath ATIS inside the AKSOS operating environment.',
 }
 
 const PRINCIPLES = [
@@ -25,7 +25,7 @@ const PRINCIPLES = [
   },
   {
     title: 'Internal by design',
-    body: "RITA has no interface of its own. It exists entirely to make what ATIS shows you defensible — it is AKSOS's integrity layer, not a separate product.",
+    body: "RITA has no interface of its own and no separate acronym expansion to market. It exists entirely to make what ATIS shows you defensible — it is AKSOS's internal integrity layer, not a separate public product.",
   },
 ]
 
@@ -48,9 +48,10 @@ export default function RitaPage() {
             </Reveal>
             <Reveal delay={200}>
               <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-                RITA — Reasoning &amp; Integrity, Traceable Analysis — is the layer of AKSOS that
-                sits beneath ATIS. It has no separate address and no separate login. Its entire
-                job is to make sure that what ATIS surfaces has a defensible reason for existing.
+                RITA is the internal layer of AKSOS that sits beneath ATIS, concerned with
+                relevance, evidence and reasoning integrity. It has no separate address and no
+                separate login. Its entire job is to make sure that what ATIS surfaces has a
+                defensible reason for existing.
               </p>
             </Reveal>
           </div>

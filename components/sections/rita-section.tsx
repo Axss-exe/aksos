@@ -21,7 +21,7 @@ export function RitaSection() {
   return (
     <section id="rita" className="border-b border-border/60 bg-card/40">
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <SectionLabel index="02" label="RITA" />
+        <SectionLabel index="03" label="RITA" />
         <Reveal delay={100}>
           <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
             The layer underneath ATIS that makes it trustworthy.
@@ -29,10 +29,10 @@ export function RitaSection() {
         </Reveal>
         <Reveal delay={200}>
           <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-            RITA — AKSOS's Reasoning &amp; Integrity engine — is not a separate product. It is
-            the internal layer that sits beneath ATIS and gives every output inside it a reason,
-            a source, and a way to be checked. Where ATIS is what you see, RITA is why you can
-            trust what you're seeing.
+            RITA is not a separate public product. It is the internal layer that sits beneath
+            ATIS, concerned with relevance, evidence and reasoning integrity — giving every
+            output inside ATIS a reason, a source, and a way to be checked. Where ATIS is what
+            you see, RITA is why you can trust what you're seeing.
           </p>
         </Reveal>
 

@@ -20,7 +20,7 @@ export function HorizonSection() {
   return (
     <section id="horizon" className="border-b border-border/60">
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
-        <SectionLabel index="07" label="Horizon" />
+        <SectionLabel index="08" label="Horizon" />
         <Reveal delay={100}>
           <h2 className="mt-6 max-w-2xl text-balance font-serif text-4xl font-light leading-tight text-foreground md:text-5xl">
             What's built next follows the same discipline.

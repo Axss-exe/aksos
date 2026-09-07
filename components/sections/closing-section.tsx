@@ -10,10 +10,10 @@ const ENTRY_POINTS = [
     external: true,
   },
   {
-    title: 'Understand RITA',
-    body: 'Read how the reasoning and integrity layer is built.',
-    href: '/rita',
-    cta: 'Go to RITA',
+    title: 'Read FRONTIER',
+    body: 'Explore the source-backed research and knowledge arm of AKSOS.',
+    href: '/research',
+    cta: 'Go to FRONTIER',
     external: false,
   },
   {
@@ -31,7 +31,7 @@ export function ClosingSection() {
       <div className="mx-auto max-w-6xl px-6 py-28 md:py-36">
         <Reveal>
           <p className="font-mono text-[12px] uppercase tracking-[0.28em] text-muted-foreground">
-            09 — Entry
+            10 — Entry
           </p>
         </Reveal>
         <Reveal delay={100}>
