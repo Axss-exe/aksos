@@ -185,3 +185,22 @@
 html {
   scroll-behavior: smooth;
 }
+
+[data-frontier] {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.15 0 0);
+  --card: oklch(0.99 0 0);
+  --card-foreground: oklch(0.15 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.42 0 0);
+  --border: oklch(0.84 0 0);
+  --primary: oklch(0.15 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  color-scheme: light;
+}
+
+[data-frontier] a:focus-visible,
+[data-frontier] input:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+}
