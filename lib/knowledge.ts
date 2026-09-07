@@ -1,408 +1,197 @@
-// Structured research data and source metadata for AKSOS knowledge layer
-// All sources are real, verifiable, and explicitly labeled with analysis framing
+export type SourceType = 'government' | 'international-organization' | 'academic' | 'research-institution' | 'official-document' | 'other'
 
 export interface Source {
-  id: string;
-  title: string;
-  url: string;
-  organization: string;
-  publishedDate: string;
-  accessedDate: string;
+  id: string
+  title: string
+  url: string
+  organization: string
+  publishedDate?: string
+  accessedDate: string
+  sourceType: SourceType
+}
+
+export interface EvidenceItem {
+  id: string
+  claim: string
+  sourceId: string
+  sourceDate?: string
+  sourceLocation?: string
 }
 
 export interface Entity {
-  id: string;
-  name: string;
-  type: 'organization' | 'region' | 'technology' | 'policy' | 'framework';
-  description: string;
-  relatedTopics: string[];
+  id: string
+  name: string
+  type: 'organization' | 'region' | 'technology' | 'policy' | 'framework' | 'institution' | 'country' | 'project'
+  description: string
+  officialUrl?: string
+  relatedTopics: string[]
+  relatedResearch?: string[]
+  relatedEntities?: string[]
 }
 
 export interface Research {
-  id: string;
-  slug: string;
-  question: string;
-  directAnswer: string;
-  whyItMatters: string;
-  landscape: string;
-  evidence: string;
-  entities: Entity[];
-  limitations: string;
-  analysis: string;
-  relatedQuestions: string[];
-  sources: Source[];
-  topics: string[];
-  regions: string[];
-  projects: string[];
-  published: string;
-  updated: string;
+  id: string
+  slug: string
+  title?: string
+  question: string
+  description?: string
+  directAnswer: string
+  whyItMatters: string
+  landscape: string
+  context?: string[]
+  evidence: string
+  evidenceItems?: EvidenceItem[]
+  entities: Entity[]
+  limitations: string
+  analysis: string
+  relatedQuestions: string[]
+  relatedResearch?: string[]
+  sources: Source[]
+  topics: string[]
+  regions: string[]
+  projects: string[]
+  status?: 'published' | 'draft' | 'active-research'
+  published: string
+  updated: string
 }
 
 export interface Topic {
-  id: string;
-  slug: string;
-  name: string;
-  description: string;
-  relatedResearch: string[];
+  id: string
+  slug: string
+  name: string
+  description: string
+  relatedResearch: string[]
+  regions?: string[]
+  entities?: string[]
+  relatedTopics?: string[]
 }
 
 export interface Region {
-  id: string;
-  slug: string;
-  name: string;
-  description: string;
-  context: string;
-  relatedResearch: string[];
+  id: string
+  slug: string
+  name: string
+  description: string
+  context: string
+  relatedResearch: string[]
+  relatedRegions?: string[]
 }
 
 export interface Project {
-  id: string;
-  slug: string;
-  name: string;
-  description: string;
-  researchQuestions: string[];
-  relatedResearch: string[];
+  id: string
+  slug: string
+  name: string
+  description: string
+  researchQuestions: string[]
+  relatedResearch: string[]
 }
 
-// Topics
+export const sourceRegistry: Source[] = [
+  { id: 'unesco-zimbabwe-ai-2026', title: "Zimbabwe launches National Artificial Intelligence Strategy", url: 'https://www.unesco.org/en/articles/zimbabwe-launches-national-artificial-intelligence-strategy', organization: 'UNESCO', publishedDate: '2026-03-25', accessedDate: '2026-09-07', sourceType: 'international-organization' },
+  { id: 'au-ai-strategy-2024', title: 'Continental Artificial Intelligence Strategy', url: 'https://www.au.int/en/documents/20240809/continental-artificial-intelligence-strategy', organization: 'African Union', publishedDate: '2024-08-09', accessedDate: '2026-09-07', sourceType: 'official-document' },
+  { id: 'worldbank-zimbabwe-digital-2021', title: 'Digital Transformation a Key Enabler of Long-Term Resilient Growth in Zimbabwe', url: 'https://www.worldbank.org/en/country/zimbabwe/publication/digital-transformation-a-key-enabler-of-long-term-resilient-growth-in-zimbabwe', organization: 'World Bank', publishedDate: '2021-06-03', accessedDate: '2026-09-07', sourceType: 'international-organization' },
+  { id: 'unesco-ai-readiness', title: 'Readiness Assessment Methodology: A Readiness Assessment for an AI Ecosystem', url: 'https://www.unesco.org/en/artificial-intelligence/recommendation-ethics/readiness-assessment', organization: 'UNESCO', accessedDate: '2026-09-07', sourceType: 'international-organization' },
+  { id: 'unesco-ai-ethics', title: 'Recommendation on the Ethics of Artificial Intelligence', url: 'https://www.unesco.org/en/artificial-intelligence/recommendation-ethics', organization: 'UNESCO', publishedDate: '2021-11-23', accessedDate: '2026-09-07', sourceType: 'official-document' },
+  { id: 'worldbank-digital-africa', title: 'Digital Economy for Africa Initiative', url: 'https://www.worldbank.org/en/programs/all-africa-digital-transformation', organization: 'World Bank', accessedDate: '2026-09-07', sourceType: 'international-organization' },
+  { id: 'itu-facts-2024', title: 'Facts and Figures 2024', url: 'https://www.itu.int/itu-d/reports/statistics/facts-figures-2024/', organization: 'ITU', publishedDate: '2024-11-27', accessedDate: '2026-09-07', sourceType: 'international-organization' },
+  { id: 'aims-research', title: 'Research at AIMS', url: 'https://www.nexteinstein.org/research/', organization: 'African Institute for Mathematical Sciences', accessedDate: '2026-09-07', sourceType: 'research-institution' },
+  { id: 'uct-ai', title: 'African Robotics Unit', url: 'https://www.uct.ac.za/research-innovation', organization: 'University of Cape Town', accessedDate: '2026-09-07', sourceType: 'academic' },
+  { id: 'up-ai', title: 'Centre for AI Research and related research activity', url: 'https://www.up.ac.za/research-matters', organization: 'University of Pretoria', accessedDate: '2026-09-07', sourceType: 'academic' },
+  { id: 'zimbabwe-innovation', title: 'Research Council of Zimbabwe', url: 'https://www.rcz.ac.zw/', organization: 'Research Council of Zimbabwe', accessedDate: '2026-09-07', sourceType: 'government' },
+  { id: 'un-e-government', title: 'UN E-Government Survey 2024', url: 'https://publicadministration.un.org/egovkb/en-us/Reports/UN-E-Government-Survey-2024', organization: 'United Nations', publishedDate: '2024-09-17', accessedDate: '2026-09-07', sourceType: 'international-organization' },
+]
+
+const sourceMap = Object.fromEntries(sourceRegistry.map((source) => [source.id, source]))
+const sources = (...ids: string[]) => ids.map((id) => sourceMap[id]).filter(Boolean)
+const entity = (id: string, name: string, type: Entity['type'], description: string, relatedTopics: string[], officialUrl?: string): Entity => ({ id, name, type, description, relatedTopics, officialUrl })
+const baseDate = '2026-09-07'
+
 export const topics: Topic[] = [
-  {
-    id: 'ai-strategy',
-    slug: 'ai-strategy',
-    name: 'National AI Strategy',
-    description: 'Government and institutional approaches to artificial intelligence adoption and governance',
-    relatedResearch: ['zimbabwe-ai-strategy', 'african-ai-landscape', 'ai-governance-frameworks'],
-  },
-  {
-    id: 'digital-infrastructure',
-    slug: 'digital-infrastructure',
-    name: 'Digital Infrastructure',
-    description: 'Connectivity, data centers, and foundational digital systems',
-    relatedResearch: ['zimbabwe-digital-transformation', 'african-connectivity-gap'],
-  },
-  {
-    id: 'skills-education',
-    slug: 'skills-education',
-    name: 'Skills and Education',
-    description: 'Workforce development, technical literacy, and educational pathways',
-    relatedResearch: ['african-ai-workforce', 'digital-skills-gap'],
-  },
-  {
-    id: 'policy-governance',
-    slug: 'policy-governance',
-    name: 'Policy and Governance',
-    description: 'Regulatory frameworks, data governance, and institutional capacity',
-    relatedResearch: ['african-ai-policy', 'data-governance-frameworks'],
-  },
-];
+  { id: 'artificial-intelligence', slug: 'artificial-intelligence', name: 'Artificial Intelligence', description: 'AI strategy, capability, research, governance, and application across African contexts.', relatedResearch: ['zimbabwe-national-ai-strategy', 'africa-continental-ai-strategy', 'ai-research-innovation-africa', 'ai-governance-africa', 'ai-and-african-development', 'zimbabwe-in-african-ai-landscape'], regions: ['africa', 'southern-africa', 'zimbabwe'], entities: ['african-union', 'unesco', 'zimbabwe'] },
+  { id: 'innovation', slug: 'innovation', name: 'Innovation', description: 'Institutions and systems that turn research, skills, and ideas into useful capability.', relatedResearch: ['ai-research-innovation-africa', 'zimbabwe-technology-innovation'], regions: ['africa', 'zimbabwe'], entities: ['aims', 'research-council-zimbabwe'] },
+  { id: 'digital-infrastructure', slug: 'digital-infrastructure', name: 'Digital Infrastructure', description: 'Connectivity, platforms, data, compute, and the infrastructure required for digital participation.', relatedResearch: ['zimbabwe-digital-economy', 'digital-infrastructure-ai-africa'], regions: ['africa', 'zimbabwe'], entities: ['world-bank', 'itu'] },
+  { id: 'institutions', slug: 'institutions', name: 'Institutions', description: 'Organizations that shape research, policy, implementation, and accountability.', relatedResearch: ['zimbabwe-technology-innovation', 'ai-research-innovation-africa'], regions: ['africa', 'zimbabwe'], entities: ['african-union', 'unesco', 'aims'] },
+  { id: 'investment', slug: 'investment', name: 'Investment', description: 'The public and private resources needed to move from policy ambition to capability.', relatedResearch: ['africa-continental-ai-strategy', 'digital-infrastructure-ai-africa'], regions: ['africa'], entities: ['african-union', 'world-bank'] },
+  { id: 'skills', slug: 'skills', name: 'Skills', description: 'Digital literacy, AI capability, education, research capacity, and workforce development.', relatedResearch: ['digital-skills-ai-capacity', 'zimbabwe-national-ai-strategy'], regions: ['africa', 'zimbabwe'], entities: ['unesco', 'aims'] },
+  { id: 'governance', slug: 'governance', name: 'Governance', description: 'Rules, institutions, assessments, and accountability for responsible technology use.', relatedResearch: ['ai-governance-africa', 'southern-africa-ai-readiness', 'zimbabwe-national-ai-strategy'], regions: ['africa', 'southern-africa', 'zimbabwe'], entities: ['unesco', 'african-union'] },
+  { id: 'technology', slug: 'technology', name: 'Technology', description: 'The technical systems and capabilities that make intelligence and digital services possible.', relatedResearch: ['digital-infrastructure-ai-africa', 'zimbabwe-digital-economy'], regions: ['africa', 'zimbabwe'], entities: ['world-bank', 'itu'] },
+  { id: 'research', slug: 'research', name: 'Research', description: 'Evidence, institutions, methods, and questions that expand what is knowable and actionable.', relatedResearch: ['ai-research-innovation-africa', 'southern-africa-ai-readiness'], regions: ['africa', 'southern-africa'], entities: ['aims', 'unesco'] },
+  { id: 'digital-economy', slug: 'digital-economy', name: 'Digital Economy', description: 'The infrastructure, platforms, services, skills, and enterprises of digital economic life.', relatedResearch: ['zimbabwe-digital-economy', 'digital-government-zimbabwe'], regions: ['zimbabwe'], entities: ['world-bank', 'zimbabwe'] },
+]
 
-// Regions
 export const regions: Region[] = [
-  {
-    id: 'africa',
-    slug: 'africa',
-    name: 'Africa',
-    description: 'Continental perspective on AI adoption and digital transformation',
-    context: 'The African Union and continental institutions are shaping AI strategy across 54 countries with diverse economic, regulatory, and technical contexts.',
-    relatedResearch: ['african-ai-landscape', 'african-ai-workforce', 'african-ai-policy', 'african-connectivity-gap'],
-  },
-  {
-    id: 'southern-africa',
-    slug: 'southern-africa',
-    name: 'Southern Africa',
-    description: 'Regional context for SADC countries and cross-border digital initiatives',
-    context: 'Southern African Development Community countries share economic ties and are increasingly coordinating on digital policy and infrastructure.',
-    relatedResearch: ['zimbabwe-ai-strategy', 'zimbabwe-digital-transformation'],
-  },
-  {
-    id: 'zimbabwe',
-    slug: 'zimbabwe',
-    name: 'Zimbabwe',
-    description: 'Country-specific perspective on AI adoption, digital transformation, and institutional development',
-    context: 'Zimbabwe is developing its National AI Strategy while addressing digital infrastructure gaps and building institutional capacity for AI governance.',
-    relatedResearch: ['zimbabwe-ai-strategy', 'zimbabwe-digital-transformation'],
-  },
-];
+  { id: 'africa', slug: 'africa', name: 'Africa', description: 'Continental perspective on AI, digital transformation, institutions, and development.', context: 'Africa is not a single technology market or governance system. Continental strategy provides shared direction while national contexts determine capacity, sequencing, and implementation.', relatedResearch: ['africa-continental-ai-strategy', 'ai-research-innovation-africa', 'digital-infrastructure-ai-africa', 'ai-governance-africa', 'digital-skills-ai-capacity', 'ai-and-african-development', 'zimbabwe-in-african-ai-landscape'], relatedRegions: ['southern-africa'] },
+  { id: 'southern-africa', slug: 'southern-africa', name: 'Southern Africa', description: 'A regional lens on AI readiness, infrastructure, institutions, and cross-border context.', context: 'Southern Africa contains distinct national systems and should not be treated as a uniform readiness category. Regional comparison is useful when the evidence and the limits of that comparison are visible.', relatedResearch: ['southern-africa-ai-readiness', 'zimbabwe-in-african-ai-landscape', 'zimbabwe-national-ai-strategy'], relatedRegions: ['africa', 'zimbabwe'] },
+  { id: 'zimbabwe', slug: 'zimbabwe', name: 'Zimbabwe', description: 'Country-specific research on AI strategy, digital economy foundations, government, and innovation.', context: 'Zimbabwe launched a National Artificial Intelligence Strategy 2026–2030 in March 2026, while earlier digital-economy evidence describes the infrastructure and capability foundations on which implementation depends.', relatedResearch: ['zimbabwe-national-ai-strategy', 'zimbabwe-digital-economy', 'zimbabwe-technology-innovation', 'digital-government-zimbabwe', 'zimbabwe-in-african-ai-landscape'], relatedRegions: ['southern-africa', 'africa'] },
+]
 
-// Projects
 export const projects: Project[] = [
-  {
-    id: 'atis',
-    slug: 'atis',
-    name: 'ATIS: AI Transparency for Intelligence Systems',
-    description: 'Understanding intelligence systems, their connections, and participation pathways',
-    researchQuestions: [
-      'How can environments with high information density become easier to understand?',
-      'What participation pathways exist for stakeholders in intelligence systems?',
-    ],
-    relatedResearch: [],
-  },
-  {
-    id: 'batana',
-    slug: 'batana',
-    name: 'Batana: Building Bridges',
-    description: 'Connecting African institutions, researchers, and practitioners in AI development',
-    researchQuestions: [
-      'How can Africa-focused AI research be made more discoverable and actionable?',
-      'What institutional bridges enable collaboration across the continent?',
-    ],
-    relatedResearch: ['african-ai-landscape', 'african-ai-workforce'],
-  },
-];
+  { id: 'atis', slug: 'atis', name: 'ATIS: AI Transparency for Intelligence Systems', description: 'Understanding intelligence systems, their connections, and participation pathways.', researchQuestions: ['How can environments with high information density become easier to understand?', 'What participation pathways exist for stakeholders in intelligence systems?'], relatedResearch: [] },
+  { id: 'batana', slug: 'batana', name: 'Batana: Building Bridges', description: 'Connecting African institutions, researchers, and practitioners in AI development.', researchQuestions: ['How can Africa-focused AI research be made more discoverable and actionable?', 'What institutional bridges enable collaboration across the continent?'], relatedResearch: ['ai-research-innovation-africa', 'digital-skills-ai-capacity'] },
+]
 
-// Entities
 export const entities: Entity[] = [
-  {
-    id: 'african-union',
-    name: 'African Union',
-    type: 'organization',
-    description: 'Continental organization developing AI strategy and digital policy',
-    relatedTopics: ['ai-strategy', 'policy-governance'],
-  },
-  {
-    id: 'zimbabwe-government',
-    name: 'Government of Zimbabwe',
-    type: 'organization',
-    description: 'National government developing AI and digital transformation strategies',
-    relatedTopics: ['ai-strategy', 'policy-governance', 'digital-infrastructure'],
-  },
-  {
-    id: 'world-bank',
-    name: 'World Bank',
-    type: 'organization',
-    description: 'International financial institution supporting digital transformation',
-    relatedTopics: ['digital-infrastructure', 'skills-education'],
-  },
-  {
-    id: 'unesco',
-    name: 'UNESCO',
-    type: 'organization',
-    description: 'UN agency supporting education, culture, and digital development',
-    relatedTopics: ['skills-education', 'policy-governance'],
-  },
-];
+  entity('african-union', 'African Union', 'organization', 'Continental organization that endorsed the Continental Artificial Intelligence Strategy in July 2024.', ['artificial-intelligence', 'governance', 'investment'], 'https://au.int/'),
+  entity('unesco', 'UNESCO', 'organization', 'United Nations agency whose AI work includes ethics guidance and readiness assessment methodology.', ['artificial-intelligence', 'governance', 'skills', 'research'], 'https://www.unesco.org/en/artificial-intelligence'),
+  entity('world-bank', 'World Bank', 'organization', 'International development institution that has documented digital transformation foundations and constraints.', ['digital-infrastructure', 'digital-economy', 'investment'], 'https://www.worldbank.org/'),
+  entity('itu', 'International Telecommunication Union', 'organization', 'United Nations specialized agency for information and communication technologies and related statistics.', ['digital-infrastructure', 'technology', 'skills'], 'https://www.itu.int/'),
+  entity('zimbabwe', 'Zimbabwe', 'country', 'Country context for the National AI Strategy 2026–2030 and digital-economy research.', ['artificial-intelligence', 'digital-economy', 'governance'], 'https://www.zim.gov.zw/'),
+  entity('southern-africa', 'Southern Africa', 'region', 'Regional context used for careful comparison of AI readiness and national systems.', ['artificial-intelligence', 'research', 'governance']),
+  entity('aims', 'African Institute for Mathematical Sciences', 'institution', 'Pan-African network supporting postgraduate training and research in mathematical and related sciences.', ['research', 'skills', 'innovation'], 'https://www.nexteinstein.org/'),
+  entity('university-cape-town', 'University of Cape Town', 'institution', 'South African university with research and innovation activity relevant to AI and robotics.', ['research', 'innovation'], 'https://www.uct.ac.za/'),
+  entity('university-pretoria', 'University of Pretoria', 'institution', 'South African university with research activity relevant to AI and technology.', ['research', 'innovation'], 'https://www.up.ac.za/'),
+  entity('research-council-zimbabwe', 'Research Council of Zimbabwe', 'institution', 'Zimbabwean research institution supporting national research coordination and capability.', ['research', 'innovation', 'institutions'], 'https://www.rcz.ac.zw/'),
+]
 
-// Research data - source-backed and labeled as AKSOS analysis/synthesis
+const common = (id: string, slug: string, question: string, title: string, directAnswer: string, whyItMatters: string, landscape: string, evidence: string, analysis: string, limitations: string, topics: string[], regions: string[], sourceIds: string[], entityIds: string[], relatedQuestions: string[], relatedResearch: string[] = []): Research => ({ id, slug, title, question, description: directAnswer, directAnswer, whyItMatters, landscape, evidence, entities: entityIds.map((entityId) => entities.find((item) => item.id === entityId)!).filter(Boolean), limitations, analysis, relatedQuestions, relatedResearch, sources: sources(...sourceIds), topics, regions, projects: ['batana'], status: 'published', published: baseDate, updated: baseDate, context: [landscape], evidenceItems: sourceIds.map((sourceId, index) => ({ id: `${id}-evidence-${index + 1}`, claim: evidence, sourceId, sourceDate: sourceMap[sourceId]?.publishedDate })) })
+
 export const research: Research[] = [
-  {
-    id: 'zimbabwe-ai-strategy',
-    slug: 'zimbabwe-ai-strategy',
-    question: 'What is Zimbabwe\'s approach to national AI strategy?',
-    directAnswer: 'Zimbabwe launched its National Artificial Intelligence Strategy in 2025, focusing on AI adoption in healthcare, agriculture, education, and public administration while building institutional capacity for AI governance.',
-    whyItMatters: 'National AI strategies set the policy and investment foundations for how countries integrate AI into their economies. Zimbabwe\'s strategy signals institutional commitment to AI development and creates frameworks for responsible adoption.',
-    landscape: 'Zimbabwe\'s strategy emerges within a broader African context. The African Union released its Continental AI Strategy in August 2024, establishing principles for AI governance across the continent. Individual countries like Zimbabwe, South Africa, and Kenya are developing complementary national strategies that align with AU frameworks while addressing local contexts.',
-    evidence: 'According to UNESCO (March 2025), Zimbabwe\'s National AI Strategy emphasizes public sector modernization and addresses skills gaps through education partnerships. The World Bank (June 2021) documented Zimbabwe\'s digital transformation needs, noting that infrastructure investment and institutional capacity are prerequisites for effective AI adoption.',
-    entities: [
-      { id: 'zimbabwe-government', name: 'Government of Zimbabwe', type: 'organization', description: '', relatedTopics: [] },
-      { id: 'african-union', name: 'African Union', type: 'organization', description: '', relatedTopics: [] },
-      { id: 'unesco', name: 'UNESCO', type: 'organization', description: '', relatedTopics: [] },
-    ],
-    limitations: 'This research is based on published government announcements and international agency documentation. Implementation details, budget allocations, and real-world outcomes are still emerging. Regional and sectoral variations within Zimbabwe are not detailed here.',
-    analysis: 'AKSOS synthesis: Zimbabwe\'s strategy reflects the broader continental shift toward AI governance. The emphasis on public sector transformation aligns with AU principles but faces real constraints—infrastructure gaps, skills shortages, and limited investment capital are well-documented in World Bank assessments. Understanding these constraints is essential for assessing whether adoption pathways are realistic.',
-    relatedQuestions: ['african-ai-landscape', 'ai-governance-frameworks', 'african-ai-workforce'],
-    sources: [
-      {
-        id: 'unesco-zimbabwe-ai-2025',
-        title: 'Zimbabwe launches National Artificial Intelligence Strategy',
-        url: 'https://www.unesco.org/en/articles/zimbabwe-launches-national-artificial-intelligence-strategy',
-        organization: 'UNESCO',
-        publishedDate: '2025-03-25',
-        accessedDate: '2025-09-07',
-      },
-      {
-        id: 'au-ai-strategy-2024',
-        title: 'Continental Artificial Intelligence Strategy',
-        url: 'https://www.au.int/en/documents/20240809/continental-artificial-intelligence-strategy',
-        organization: 'African Union',
-        publishedDate: '2024-08-09',
-        accessedDate: '2025-09-07',
-      },
-      {
-        id: 'worldbank-zimbabwe-digital-2021',
-        title: 'Digital Transformation a Key Enabler of Long-Term Resilient Growth in Zimbabwe',
-        url: 'https://www.worldbank.org/en/country/zimbabwe/publication/digital-transformation-a-key-enabler-of-long-term-resilient-growth-in-zimbabwe',
-        organization: 'World Bank',
-        publishedDate: '2021-06-03',
-        accessedDate: '2025-09-07',
-      },
-    ],
-    topics: ['ai-strategy', 'policy-governance'],
-    regions: ['zimbabwe', 'southern-africa', 'africa'],
-    projects: ['batana'],
-    published: '2025-09-07',
-    updated: '2025-09-07',
-  },
-  {
-    id: 'african-ai-landscape',
-    slug: 'african-ai-landscape',
-    question: 'What is the current landscape of AI development and adoption across Africa?',
-    directAnswer: 'Africa is rapidly developing AI capabilities and policies, with the African Union\'s Continental AI Strategy providing a coordinating framework. Individual countries are advancing AI research, building institutional capacity, and integrating AI into sectors like healthcare, agriculture, and education, though infrastructure and investment gaps persist.',
-    whyItMatters: 'The African AI landscape determines the region\'s ability to shape global AI development, ensure AI benefits reach African populations, and build local capacity rather than remaining dependent on external solutions.',
-    landscape: 'The AU\'s Continental AI Strategy establishes principles for responsible AI development, emphasizing sovereignty, equity, and accountability. Simultaneously, countries are implementing national strategies, universities are expanding AI research, and private sector initiatives are growing. However, connectivity gaps, limited investment capital, and brain drain remain significant constraints.',
-    evidence: 'The African Union\'s August 2024 strategy document outlines continental priorities and country-led implementation. Individual country announcements (including Zimbabwe\'s 2025 strategy) reflect AU alignment. Research institutions across Africa are publishing AI research, though publication volume remains lower than global leaders.',
-    entities: [
-      { id: 'african-union', name: 'African Union', type: 'organization', description: '', relatedTopics: [] },
-      { id: 'zimbabwe-government', name: 'Government of Zimbabwe', type: 'organization', description: '', relatedTopics: [] },
-    ],
-    limitations: 'This overview synthesizes public strategy documents and announcements. Detailed sectoral adoption rates, investment figures, and implementation progress vary significantly by country and are not comprehensively documented here. Brain drain and capacity constraints are real but difficult to quantify precisely.',
-    analysis: 'AKSOS synthesis: Africa\'s AI landscape is characterized by high policy ambition and growing institutional commitment, but significant implementation challenges. The gap between strategy and execution—driven by infrastructure, capital, and skills constraints—is the key variable determining real-world AI impact over the next five years.',
-    relatedQuestions: ['zimbabwe-ai-strategy', 'african-ai-workforce', 'african-ai-policy', 'african-connectivity-gap'],
-    sources: [
-      {
-        id: 'au-ai-strategy-2024',
-        title: 'Continental Artificial Intelligence Strategy',
-        url: 'https://www.au.int/en/documents/20240809/continental-artificial-intelligence-strategy',
-        organization: 'African Union',
-        publishedDate: '2024-08-09',
-        accessedDate: '2025-09-07',
-      },
-    ],
-    topics: ['ai-strategy', 'policy-governance'],
-    regions: ['africa'],
-    projects: ['batana'],
-    published: '2025-09-07',
-    updated: '2025-09-07',
-  },
-  {
-    id: 'zimbabwe-digital-transformation',
-    slug: 'zimbabwe-digital-transformation',
-    question: 'What are the key barriers and opportunities for digital transformation in Zimbabwe?',
-    directAnswer: 'Digital transformation in Zimbabwe faces infrastructure challenges—connectivity gaps, limited broadband access, and aging digital infrastructure—but also emerging opportunities through targeted investment, institutional reform, and skills development programs.',
-    whyItMatters: 'Digital infrastructure is a prerequisite for AI adoption. Understanding Zimbabwe\'s digital transformation pathway illuminates both the realistic pace of AI integration and the investments required to move from strategy to implementation.',
-    landscape: 'The World Bank (2021) documented Zimbabwe\'s digital infrastructure gaps, identifying connectivity as a primary bottleneck. Since then, infrastructure investment has been announced, but deployment remains uneven—urban areas have better connectivity than rural regions. Skills development is also a constraint; technical education requires curriculum updates and educator training.',
-    evidence: 'World Bank assessments detail infrastructure investment needs and implementation barriers. Government announcements signal infrastructure expansion, but independent monitoring of deployment rates and service quality is limited.',
-    entities: [
-      { id: 'zimbabwe-government', name: 'Government of Zimbabwe', type: 'organization', description: '', relatedTopics: [] },
-      { id: 'world-bank', name: 'World Bank', type: 'organization', description: '', relatedTopics: [] },
-    ],
-    limitations: 'Infrastructure data varies in recency and comprehensiveness. Rural connectivity assessments are less detailed than urban analyses. Implementation timelines and actual deployment figures are not uniformly documented across all provinces.',
-    analysis: 'AKSOS synthesis: Zimbabwe\'s digital transformation is the foundation layer for AI adoption. Current constraints suggest realistic AI integration timelines are measured in years, not months. Infrastructure investment is the enabling variable; without it, national AI strategies remain aspirational.',
-    relatedQuestions: ['zimbabwe-ai-strategy', 'african-connectivity-gap', 'african-ai-workforce'],
-    sources: [
-      {
-        id: 'worldbank-zimbabwe-digital-2021',
-        title: 'Digital Transformation a Key Enabler of Long-Term Resilient Growth in Zimbabwe',
-        url: 'https://www.worldbank.org/en/country/zimbabwe/publication/digital-transformation-a-key-enabler-of-long-term-resilient-growth-in-zimbabwe',
-        organization: 'World Bank',
-        publishedDate: '2021-06-03',
-        accessedDate: '2025-09-07',
-      },
-    ],
-    topics: ['digital-infrastructure', 'skills-education'],
-    regions: ['zimbabwe', 'southern-africa'],
-    projects: ['batana'],
-    published: '2025-09-07',
-    updated: '2025-09-07',
-  },
-  {
-    id: 'ai-governance-frameworks',
-    slug: 'ai-governance-frameworks',
-    question: 'What governance frameworks are emerging for AI in developing regions?',
-    directAnswer: 'The African Union\'s Continental AI Strategy and individual country strategies are establishing governance principles focused on responsible AI development, data sovereignty, and accountability. These frameworks emphasize local control, equity, and alignment with African values.',
-    whyItMatters: 'AI governance determines who controls AI systems, how risks are managed, and whether benefits are distributed equitably. For African countries, governance frameworks that prioritize sovereignty and local capacity are essential for ensuring AI development serves regional interests.',
-    landscape: 'The AU\'s Continental AI Strategy sets overarching principles. Individual countries like Zimbabwe are developing national governance frameworks that operationalize these principles. These frameworks address data governance, ethical AI development, investment incentives, and sectoral regulation.',
-    evidence: 'The AU strategy document (August 2024) outlines governance principles. Country-level announcements reflect operationalization of these principles within national contexts.',
-    entities: [
-      { id: 'african-union', name: 'African Union', type: 'organization', description: '', relatedTopics: [] },
-      { id: 'zimbabwe-government', name: 'Government of Zimbabwe', type: 'organization', description: '', relatedTopics: [] },
-    ],
-    limitations: 'Implementation is early-stage. Real-world effectiveness of these frameworks has not yet been demonstrated. Enforcement mechanisms and institutional capacity to implement governance are still being built.',
-    analysis: 'AKSOS synthesis: Governance frameworks represent institutional maturity in AI development. The AU and country-level initiatives signal that Africa is not passively adopting AI but actively shaping how it should be governed. The gap between frameworks and enforcement is the key implementation challenge.',
-    relatedQuestions: ['african-ai-landscape', 'zimbabwe-ai-strategy', 'african-ai-policy'],
-    sources: [
-      {
-        id: 'au-ai-strategy-2024',
-        title: 'Continental Artificial Intelligence Strategy',
-        url: 'https://www.au.int/en/documents/20240809/continental-artificial-intelligence-strategy',
-        organization: 'African Union',
-        publishedDate: '2024-08-09',
-        accessedDate: '2025-09-07',
-      },
-    ],
-    topics: ['policy-governance', 'ai-strategy'],
-    regions: ['africa'],
-    projects: ['batana'],
-    published: '2025-09-07',
-    updated: '2025-09-07',
-  },
-];
+  common('zimbabwe-national-ai-strategy', 'zimbabwe-national-ai-strategy', "What is Zimbabwe's current national approach to artificial intelligence?", "Zimbabwe's National Artificial Intelligence Strategy", 'Zimbabwe launched its National Artificial Intelligence Strategy 2026–2030 on 13 March 2026. UNESCO describes it as an approach to responsible AI and inclusive development spanning agriculture, healthcare, education, finance, public administration, digital infrastructure, talent, research, innovation, and governance.', 'A national strategy is a statement of policy direction, not proof that implementation has already occurred. It gives institutions and researchers a common object to examine: priorities, responsibilities, resources, safeguards, and the conditions required for delivery.', 'UNESCO reports that Zimbabwe’s strategy sits alongside a 2025 AI Readiness Assessment process. The distinction matters: a readiness assessment describes conditions and capability; a strategy sets direction; implementation would require evidence of programs, budgets, institutions, and outcomes.', 'UNESCO reports the launch date, the 2026–2030 period, the responsible and inclusive framing, the sector areas, and the 2025 readiness report.', 'AKSOS analysis: the strategy is best read as a coordination instrument. Its breadth creates a useful map of national ambition, but the next research question is execution: which institutions own each priority, what infrastructure exists, and how will public value and accountability be measured?', 'The UNESCO article is a launch report, not a full implementation evaluation. The page does not infer budgets, outcomes, or readiness levels that the source does not provide.', ['artificial-intelligence', 'governance', 'skills', 'research'], ['zimbabwe', 'southern-africa', 'africa'], ['unesco-zimbabwe-ai-2026', 'unesco-ai-readiness'], ['zimbabwe', 'unesco', 'african-union'], ["What are Zimbabwe's AI priorities?", 'How is Zimbabwe approaching AI governance?', "How does Zimbabwe's strategy relate to Africa's continental AI strategy?", 'How ready is Southern Africa for artificial intelligence?'], ['africa-continental-ai-strategy', 'southern-africa-ai-readiness', 'zimbabwe-in-african-ai-landscape']),
+  common('africa-continental-ai-strategy', 'africa-continental-ai-strategy', "What is Africa's continental strategy for artificial intelligence?", "Africa's Continental Artificial Intelligence Strategy", 'The African Union endorsed a Continental AI Strategy in July 2024. The strategy is development-oriented and Africa-centric, with themes including capability, research, infrastructure, investment, responsible AI, governance, cooperation, and inclusion.', 'The continental strategy is a reference point for comparing national approaches without assuming that countries implement it identically. It makes African agency and development priorities visible in a global AI conversation.', 'The AU strategy provides continental direction; national strategies translate priorities into country settings. A relevant relationship to Zimbabwe is therefore one of policy context and alignment, not proof that the two strategies are identical or jointly implemented.', 'The African Union source identifies the strategy, its endorsement context, and its development-oriented framing.', 'AKSOS analysis: the strategy’s value is partly connective. It can help researchers trace how infrastructure, capability, governance, and inclusion are treated as one system rather than isolated policy silos.', 'The strategy is a policy framework. It should not be used alone to claim implementation outcomes, country-level readiness, or completed cooperation programs.', ['artificial-intelligence', 'governance', 'investment', 'research'], ['africa', 'southern-africa', 'zimbabwe'], ['au-ai-strategy-2024'], ['african-union', 'zimbabwe', 'southern-africa'], ['How does the continental strategy relate to national strategies?', 'Which capabilities are required for implementation?', 'How does Zimbabwe fit into the continental landscape?'], ['zimbabwe-national-ai-strategy', 'ai-governance-africa', 'zimbabwe-in-african-ai-landscape']),
+  common('zimbabwe-digital-economy', 'zimbabwe-digital-economy', "What are the foundations of Zimbabwe's digital economy?", "Zimbabwe's Digital Economy Foundations", 'The World Bank’s Zimbabwe Digital Economy Diagnostic organized foundations around digital infrastructure, digital government platforms, digital financial services, digital skills, and digital entrepreneurship. Its figures, including approximately 7.1 million mobile-wallet holders and 96% of formal-sector transactions conducted digitally, are historical diagnostic figures and must be read in that context.', 'AI systems depend on the wider digital economy. Connectivity, platforms, skills, financial rails, and entrepreneurship shape who can use AI and whether useful systems can move beyond pilots.', 'The diagnostic provides a dated baseline rather than a current national dashboard. It is useful because it names the enabling layers that policy must connect, while its age makes current verification an open research need.', 'World Bank reporting from the diagnostic describes the five foundational areas and reports the approximately 7.1 million and 96% figures as historical findings.', 'AKSOS analysis: the diagnostic changes the question from “does Zimbabwe have AI ambition?” to “which enabling layer is binding in each use case?” AI policy without foundation-specific sequencing risks treating access, capability, and deployment as the same problem.', 'The primary diagnostic was published in 2021. Its statistics are not presented as 2026 values, and this page does not infer post-publication progress.', ['digital-economy', 'digital-infrastructure', 'technology', 'skills'], ['zimbabwe', 'southern-africa'], ['worldbank-zimbabwe-digital-2021'], ['world-bank', 'zimbabwe'], ['Which digital foundations are most important for AI?', 'What has changed since the diagnostic?', 'How does digital government fit into the foundation?'], ['digital-infrastructure-ai-africa', 'digital-government-zimbabwe', 'zimbabwe-national-ai-strategy']),
+  common('southern-africa-ai-readiness', 'southern-africa-ai-readiness', 'How is artificial intelligence readiness being assessed across Southern Africa?', 'AI Readiness in Southern Africa', 'AI readiness assessment, AI strategy, AI policy, and AI implementation are different objects. UNESCO’s readiness methodology provides a way to assess an ecosystem; it does not by itself establish that every country has a national strategy, the same readiness level, or completed implementation.', 'Clear categories prevent overclaiming. Comparing countries responsibly requires identifying what has actually been assessed, by whom, when, and with what evidence.', 'UNESCO’s readiness work is designed to examine an ecosystem’s conditions. Southern African countries, including Angola, Botswana, Malawi, Mozambique, Namibia, South Africa, Zambia, and Zimbabwe, should be connected only where the available UNESCO evidence supports the connection.', 'UNESCO provides a readiness assessment methodology and reports a Zimbabwe readiness process. The source does not make a single comparative ranking for all countries listed here.', 'AKSOS analysis: readiness is most useful as a structured inquiry into institutions, infrastructure, skills, policy, and inclusion. It should not become a proxy label for national performance or a shortcut around country-specific evidence.', 'Public readiness material is not a substitute for country-by-country primary research. This page deliberately avoids ranking the listed countries or assigning them a common status.', ['artificial-intelligence', 'governance', 'research', 'institutions'], ['southern-africa', 'africa', 'zimbabwe'], ['unesco-ai-readiness'], ['unesco', 'southern-africa', 'zimbabwe'], ['What is the difference between readiness and implementation?', 'What evidence exists for Zimbabwe?', 'How should Southern African comparisons be made?'], ['zimbabwe-national-ai-strategy', 'africa-continental-ai-strategy']),
+  common('ai-research-innovation-africa', 'ai-research-innovation-africa', 'Where is artificial intelligence research and innovation being developed in Africa?', 'AI Research and Innovation in Africa', 'Selected examples include the African Institute for Mathematical Sciences, research activity at the University of Cape Town, and research activity at the University of Pretoria. These examples show institutional pathways for training and research; they are not an exhaustive map of African AI innovation.', 'Research institutions create the human capability, methods, and local problem understanding that make AI development more than technology importation.', 'A credible map should identify what each institution actually does and preserve the limits of selection. A university research page, a training network, and a national research council are different institutional roles.', 'AIMS publishes information about its research network; the University of Cape Town and University of Pretoria publish research and innovation information through their official sites.', 'AKSOS analysis: discoverability is an infrastructure problem for knowledge itself. A selected, source-linked index can help connect institutions without implying that visibility equals impact or that the list is comprehensive.', 'This is a selected set of examples, not a ranking or exhaustive directory. Institutional activity changes and should be checked against the linked official pages.', ['research', 'innovation', 'institutions', 'skills'], ['africa', 'southern-africa'], ['aims-research', 'uct-ai', 'up-ai'], ['aims', 'university-cape-town', 'university-pretoria'], ['Which institutions support AI skills?', 'How do research institutions connect to policy?', 'What is missing from a selected examples list?'], ['digital-skills-ai-capacity', 'africa-continental-ai-strategy']),
+  common('digital-infrastructure-ai-africa', 'digital-infrastructure-ai-africa', 'Why does digital infrastructure matter for artificial intelligence development in Africa?', 'Digital Infrastructure and AI in Africa', 'Connectivity, data, compute, cloud infrastructure, and skills are linked conditions for AI deployment. The evidence supports treating them as an enabling system; it does not support inventing a single continental compute or deployment statistic.', 'Infrastructure determines who can access digital systems, where data can be processed, which services can scale, and whether locally relevant research can be tested in practice.', 'The World Bank frames digital transformation around foundational systems and the ITU provides dated global connectivity indicators. The AU strategy adds a policy context for capability and infrastructure; none of these sources should be collapsed into a single measure of AI readiness.', 'The World Bank’s Zimbabwe diagnostic identifies infrastructure and platforms as foundations. ITU publishes dated connectivity statistics. The AU strategy identifies infrastructure and capability as continental priorities.', 'AKSOS analysis: infrastructure is not merely a technical precondition. It is a distribution mechanism: it shapes geography, affordability, institutional participation, data access, and the feasibility of public-interest deployment.', 'Infrastructure conditions vary by country and within countries. The sources here do not provide a complete African compute inventory or a current country-by-country deployment comparison.', ['digital-infrastructure', 'technology', 'investment', 'artificial-intelligence'], ['africa', 'zimbabwe'], ['worldbank-digital-africa', 'itu-facts-2024', 'au-ai-strategy-2024'], ['world-bank', 'itu', 'african-union'], ['What infrastructure does a specific AI use case require?', 'How should connectivity statistics be dated?', 'What is the relationship between infrastructure and inclusion?'], ['zimbabwe-digital-economy', 'africa-continental-ai-strategy']),
+  common('ai-governance-africa', 'ai-governance-africa', 'How is artificial intelligence governance developing across Africa?', 'Artificial Intelligence Governance in Africa', 'Governance is developing through multiple layers: the African Union’s continental strategy, UNESCO’s ethics and readiness work, and national strategies and policies. Africa does not have one unified governance framework.', 'Governance determines how systems are assessed, who is accountable, how harms are handled, and whether local priorities have institutional force.', 'The AU strategy provides continental direction. UNESCO provides an ethics recommendation and readiness methodology. National approaches vary in legal status, institutional capacity, and stage of development; comparison is only sound when those differences remain visible.', 'The AU strategy, UNESCO ethics recommendation, UNESCO readiness methodology, and Zimbabwe strategy reporting are the primary policy materials connected here.', 'AKSOS analysis: governance is a coordination problem as much as a compliance problem. Strong principles need institutions that can translate them into procurement, data practice, evaluation, sector rules, and public accountability.', 'The linked documents are policy and guidance materials, not a complete evaluation of enforcement or outcomes. This page does not claim harmonization or implementation success.', ['governance', 'artificial-intelligence', 'institutions'], ['africa', 'southern-africa', 'zimbabwe'], ['au-ai-strategy-2024', 'unesco-ai-ethics', 'unesco-ai-readiness', 'unesco-zimbabwe-ai-2026'], ['african-union', 'unesco', 'zimbabwe'], ['How do ethics guidance and national policy connect?', 'What would implementation evidence look like?', 'How should governance be compared?'], ['southern-africa-ai-readiness', 'zimbabwe-national-ai-strategy']),
+  common('zimbabwe-technology-innovation', 'zimbabwe-technology-innovation', 'What institutions and systems support technology and innovation in Zimbabwe?', "Zimbabwe's Technology and Innovation Environment", 'Zimbabwe’s innovation environment includes research and coordination institutions such as the Research Council of Zimbabwe, alongside universities, government bodies, enterprises, and entrepreneurship networks. Each institution has a different role; a directory should explain those roles rather than present a promotional list.', 'Innovation depends on connections between research, education, finance, policy, entrepreneurship, and users. Mapping institutions makes those connections inspectable.', 'The Research Council of Zimbabwe is a verifiable national research institution. A fuller environment map requires continued primary research into universities, hubs, government programs, and private organizations.', 'The Research Council of Zimbabwe’s official site is the primary source for its institutional role. This page does not infer the performance or reach of institutions from their existence alone.', 'AKSOS analysis: institutional visibility is useful only when role and relationship are explicit. The next layer is to trace how research becomes capability, how entrepreneurs access support, and where evidence of outcomes exists.', 'This is an initial, non-exhaustive map. It does not rank institutions or claim that every possible organization has been identified.', ['institutions', 'innovation', 'research', 'technology'], ['zimbabwe'], ['zimbabwe-innovation'], ['research-council-zimbabwe'], ['What role does a research council play?', 'Which institutions connect research and entrepreneurship?', 'What evidence shows innovation outcomes?'], ['ai-research-innovation-africa', 'zimbabwe-national-ai-strategy']),
+  common('digital-skills-ai-capacity', 'digital-skills-ai-capacity', 'What role do digital and AI skills play in Africa’s technology development?', 'Digital Skills and AI Capacity in Africa', 'Digital and AI skills support education, research, workforce development, and the ability to adapt technology to local needs. The evidence base should distinguish broad digital literacy from specialist AI capability and avoid unsupported skills-gap figures.', 'Skills are a capability layer: infrastructure can exist without people who can use, govern, maintain, evaluate, or improve the systems built on it.', 'AIMS provides a concrete institutional example of pan-African postgraduate training and research. UNESCO’s AI work connects capability to responsible and inclusive development. National strategies add country priorities but do not automatically prove capacity has been built.', 'AIMS publishes its research and training role; UNESCO’s Zimbabwe strategy reporting identifies talent and research among the areas addressed by the national strategy.', 'AKSOS analysis: skills policy should be connected to pathways, not just counts. The meaningful questions are who is trained, where they can practice, which institutions retain capability, and whether communities can participate in defining useful applications.', 'No employment, shortage, or retention statistic is included without a directly supporting source. The institutional examples are illustrative, not a continent-wide measure.', ['skills', 'research', 'artificial-intelligence', 'institutions'], ['africa', 'zimbabwe'], ['aims-research', 'unesco-zimbabwe-ai-2026'], ['aims', 'unesco'], ['What kinds of skills does an AI ecosystem need?', 'How does research capacity relate to workforce development?', 'What would evidence of skills impact look like?'], ['ai-research-innovation-africa', 'zimbabwe-national-ai-strategy']),
+  common('digital-government-zimbabwe', 'digital-government-zimbabwe', 'How is Zimbabwe approaching digital government?', 'Digital Government in Zimbabwe', 'Available evidence supports examining digital government through platforms, public services, financial services, infrastructure, skills, and institutional capacity. It does not support assuming that all government services are online or that digitization has produced uniform access.', 'Public-sector digitization affects how people encounter the state and how government can coordinate services. It is therefore a governance and participation question, not only a software question.', 'The World Bank’s diagnostic identifies digital government platforms as one of five digital-economy foundations. The UN E-Government Survey provides a broader comparative framework, but country-level interpretation requires care and current official evidence.', 'The World Bank source names digital government platforms as a foundation. The UN publishes a 2024 survey for comparative e-government research.', 'AKSOS analysis: digital government should be evaluated as a service relationship. Availability, usability, identity, interoperability, affordability, recourse, and inclusion matter alongside the existence of a platform.', 'This page does not claim a complete inventory of Zimbabwean public services or current implementation status. More official service-level research is required.', ['digital-economy', 'institutions', 'governance', 'digital-infrastructure'], ['zimbabwe'], ['worldbank-zimbabwe-digital-2021', 'un-e-government'], ['world-bank', 'zimbabwe'], ['Which public services are digitized?', 'How should digital government be evaluated?', 'What infrastructure does public-service digitization require?'], ['zimbabwe-digital-economy', 'zimbabwe-national-ai-strategy']),
+  common('ai-and-african-development', 'ai-and-african-development', 'What development problems are African AI strategies attempting to address?', 'Artificial Intelligence and African Development', 'The AU and Zimbabwe strategy materials connect AI with development areas including agriculture, health, education, public administration, finance, infrastructure, research, and skills. These are policy intentions; they are not evidence that AI has already produced the stated outcomes.', 'Separating intent from outcome is essential for credible research and for deciding what implementation evidence should be collected next.', 'The AU strategy offers a continental development frame. UNESCO’s report on Zimbabwe’s strategy shows how a national approach names sectors and capability layers. The relationship is thematic and contextual, not proof of uniform implementation.', 'The AU strategy and UNESCO’s Zimbabwe strategy report identify development sectors and responsible/inclusive framing.', 'AKSOS analysis: the strongest knowledge graph connects policy areas to the conditions required for delivery and to evidence of outcomes. “AI for health” is a starting question; it is not a result.', 'The sources establish policy intent and scope. They do not establish causal impacts, adoption rates, or sector outcomes.', ['artificial-intelligence', 'governance', 'digital-infrastructure', 'skills', 'digital-economy'], ['africa', 'zimbabwe'], ['au-ai-strategy-2024', 'unesco-zimbabwe-ai-2026'], ['african-union', 'unesco', 'zimbabwe'], ['Which sectors are named in national strategies?', 'What evidence would show implementation?', 'How do infrastructure and skills condition outcomes?'], ['africa-continental-ai-strategy', 'zimbabwe-national-ai-strategy', 'digital-infrastructure-ai-africa']),
+  common('zimbabwe-in-african-ai-landscape', 'zimbabwe-in-african-ai-landscape', "How does Zimbabwe's AI strategy fit into the wider African AI landscape?", 'Zimbabwe in the African AI Landscape', 'Zimbabwe’s National AI Strategy 2026–2030 can be understood within a layered landscape: the AU’s continental strategy provides context; UNESCO’s readiness work provides an assessment frame; Zimbabwe’s strategy sets national direction. The relationship is one of connection, not proof of identical policy or implementation.', 'This synthesis demonstrates why a knowledge graph matters: national policy, regional assessment, continental strategy, and foundational infrastructure answer different parts of the same question.', 'The chain is Africa → Southern Africa → Zimbabwe → national strategy, with each level carrying a different kind of evidence. The World Bank’s digital-economy diagnostic adds historical foundation evidence rather than a direct strategy comparison.', 'The synthesis draws from the AU strategy, UNESCO readiness and Zimbabwe strategy materials, and the World Bank diagnostic.', 'AKSOS analysis: Zimbabwe’s position is most usefully studied as a coordination problem across layers. The next research is not simply whether strategies align, but which institutions, infrastructure, skills, and accountability mechanisms connect them to practice.', 'This is an AKSOS synthesis, not a claim that the policies form one implementation system. Evidence of alignment, funding, and outcomes requires further primary research.', ['artificial-intelligence', 'governance', 'research', 'digital-infrastructure'], ['zimbabwe', 'southern-africa', 'africa'], ['au-ai-strategy-2024', 'unesco-ai-readiness', 'unesco-zimbabwe-ai-2026', 'worldbank-zimbabwe-digital-2021'], ['african-union', 'unesco', 'zimbabwe', 'southern-africa'], ['What connects continental and national AI strategy?', 'What evidence is missing between readiness and implementation?', 'Which institutions can translate strategy into capability?'], ['zimbabwe-national-ai-strategy', 'africa-continental-ai-strategy', 'southern-africa-ai-readiness']),
+]
 
-// Search index for client-side discovery
 export function buildSearchIndex() {
-  const index: Array<{ id: string; slug: string; type: string; title: string; text: string }> = [];
-
-  research.forEach((r) => {
-    index.push({
-      id: r.id,
-      slug: r.slug,
-      type: 'research',
-      title: r.question,
-      text: `${r.question} ${r.directAnswer} ${r.landscape} ${r.topics.join(' ')} ${r.regions.join(' ')}`.toLowerCase(),
-    });
-  });
-
-  topics.forEach((t) => {
-    index.push({
-      id: t.id,
-      slug: t.slug,
-      type: 'topic',
-      title: t.name,
-      text: `${t.name} ${t.description}`.toLowerCase(),
-    });
-  });
-
-  regions.forEach((r) => {
-    index.push({
-      id: r.id,
-      slug: r.slug,
-      type: 'region',
-      title: r.name,
-      text: `${r.name} ${r.description} ${r.context}`.toLowerCase(),
-    });
-  });
-
-  projects.forEach((p) => {
-    index.push({
-      id: p.id,
-      slug: p.slug,
-      type: 'project',
-      title: p.name,
-      text: `${p.name} ${p.description}`.toLowerCase(),
-    });
-  });
-
-  return index;
-}
-
-// Search function for deterministic client-side search
-export function search(query: string, index: ReturnType<typeof buildSearchIndex>) {
-  const q = query.toLowerCase().trim();
-  if (!q) return [];
-
+  const index: Array<{ id: string; slug: string; type: string; title: string; text: string; region?: string; topic?: string }> = []
+  research.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'research', title: item.title ?? item.question, text: [item.title, item.question, item.directAnswer, item.description, item.topics.join(' '), item.regions.join(' '), item.entities.map((e) => e.name).join(' ')].join(' ').toLowerCase(), region: item.regions[0], topic: item.topics[0] }))
+  topics.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'topic', title: item.name, text: `${item.name} ${item.description} ${item.relatedResearch.join(' ')}`.toLowerCase() }))
+  regions.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'region', title: item.name, text: `${item.name} ${item.description} ${item.context} ${item.relatedResearch.join(' ')}`.toLowerCase() }))
+  projects.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'project', title: item.name, text: `${item.name} ${item.description} ${item.researchQuestions.join(' ')}`.toLowerCase() }))
   return index
-    .filter((item) => item.text.includes(q))
-    .sort((a, b) => {
-      // Exact match first
-      if (a.title.toLowerCase() === q && b.title.toLowerCase() !== q) return -1;
-      if (b.title.toLowerCase() === q && a.title.toLowerCase() !== q) return 1;
-      // Title match second
-      const aTitle = a.title.toLowerCase().includes(q);
-      const bTitle = b.title.toLowerCase().includes(q);
-      if (aTitle && !bTitle) return -1;
-      if (bTitle && !aTitle) return 1;
-      return 0;
-    })
-    .slice(0, 10);
 }
 
-// Helper to get research by ID
-export function getResearchById(id: string): Research | undefined {
-  return research.find((r) => r.id === id);
+export function search(query: string, index: ReturnType<typeof buildSearchIndex>) {
+  const terms = query.toLowerCase().trim().split(/\s+/).filter(Boolean)
+  if (!terms.length) return []
+  return index.filter((item) => terms.every((term) => item.text.includes(term))).sort((a, b) => Number(b.title.toLowerCase().includes(terms[0])) - Number(a.title.toLowerCase().includes(terms[0]))).slice(0, 10)
 }
+export function getResearchById(id: string) { return research.find((item) => item.id === id) }
+export function getRelatedResearch(ids: string[]) { return ids.map(getResearchById).filter((item): item is Research => Boolean(item)) }
+export function getSourceById(id: string) { return sourceMap[id] }
+export function getEntityById(id: string) { return entities.find((item) => item.id === id) }
 
-// Helper to get related research
-export function getRelatedResearch(ids: string[]): Research[] {
-  return ids
-    .map((id) => getResearchById(id))
-    .filter((r) => r !== undefined) as Research[];
-}
+export function getResearchBySlug(slug: string) { return research.find((item) => item.slug === slug) }
+export function getTopicBySlug(slug: string) { return topics.find((item) => item.slug === slug) }
+export function getRegionBySlug(slug: string) { return regions.find((item) => item.slug === slug) }
+export function getProjectBySlug(slug: string) { return projects.find((item) => item.slug === slug) }
+
+export const relationshipRegistry = [
+  { from: 'zimbabwe', relation: 'hasPolicy', to: 'zimbabwe-national-ai-strategy' },
+  { from: 'zimbabwe', relation: 'locatedIn', to: 'southern-africa' },
+  { from: 'southern-africa', relation: 'partOf', to: 'africa' },
+  { from: 'zimbabwe-national-ai-strategy', relation: 'relatedTo', to: 'africa-continental-ai-strategy' },
+  { from: 'zimbabwe-national-ai-strategy', relation: 'requires', to: 'digital-infrastructure-ai-africa' },
+  { from: 'zimbabwe-national-ai-strategy', relation: 'requires', to: 'digital-skills-ai-capacity' },
+  { from: 'zimbabwe-national-ai-strategy', relation: 'assessedBy', to: 'southern-africa-ai-readiness' },
+]
+export const questions = research.flatMap((item) => item.relatedQuestions.map((question, index) => ({ id: `${item.id}-q-${index + 1}`, question, researchId: item.id })))
+export const allSources = sourceRegistry
+export const allEntities = entities
