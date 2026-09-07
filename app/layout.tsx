@@ -53,6 +53,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark bg-background ${spaceGrotesk.variable} ${plexMono.variable}`}>
       <body className="antialiased font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                { '@type': 'Organization', name: 'AKSOS', url: 'https://aksos.org' },
+                { '@type': 'WebSite', name: 'AKSOS', url: 'https://aksos.org', potentialAction: { '@type': 'SearchAction', target: 'https://aksos.org/research?q={search_term_string}', 'query-input': 'required name=search_term_string' } },
+              ],
+            }),
+          }}
+        />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

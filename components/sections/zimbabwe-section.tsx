@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { Reveal } from '@/components/reveal'
 import { SectionLabel } from '@/components/sections/section-label'
 import { zimbabweStory } from '@/data/zimbabwe-story'
@@ -39,6 +41,13 @@ export function ZimbabweSection() {
             <p className="mt-4 text-[15px] leading-relaxed text-foreground">
               {zimbabweStory.whyItMatters.body}
             </p>
+
+            <Link
+              href="/research"
+              className="mt-8 inline-flex font-mono text-[11px] uppercase tracking-[0.18em] text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
+            >
+              Explore the Frontier case study
+            </Link>
 
             <div className="mt-10 border-t border-border/60 pt-6">
               <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground/70">
