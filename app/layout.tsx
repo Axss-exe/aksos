@@ -19,7 +19,7 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'AKSOS — See the environment. Participate in it.',
   description:
-    'AKSOS researches and prototypes systems that make complex environments easier to see, understand and participate in.',
+    'AKSOS researches and builds systems that make complex environments easier to see, understand and participate in.',
   generator: 'v0.app',
   icons: {
     icon: [
