@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { IBM_Plex_Mono, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import { SITE_URL } from '@/lib/site-config'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -59,8 +60,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@graph': [
-                { '@type': 'Organization', name: 'AKSOS', url: 'https://aksos.org' },
-                { '@type': 'WebSite', name: 'AKSOS', url: 'https://aksos.org', potentialAction: { '@type': 'SearchAction', target: 'https://aksos.org/research?q={search_term_string}', 'query-input': 'required name=search_term_string' } },
+                { '@type': 'Organization', name: 'AKSOS', url: SITE_URL },
+                { '@type': 'WebSite', name: 'AKSOS', url: SITE_URL, potentialAction: { '@type': 'SearchAction', target: `${SITE_URL}/research?q={search_term_string}`, 'query-input': 'required name=search_term_string' } },
               ],
             }),
           }}

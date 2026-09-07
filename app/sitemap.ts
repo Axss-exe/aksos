@@ -1,13 +1,15 @@
 import type { MetadataRoute } from 'next'
 import { research, regions, topics, projects } from '@/lib/knowledge'
+import { absoluteUrl } from '@/lib/site-config'
 
-const baseUrl = 'https://aksos.org'
+const staticRoutes = ['', '/about', '/research', '/regions', '/projects', '/sources', '/atis', '/rita', '/participate']
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    '', '/research', '/regions', '/projects', '/about', '/atis', '/rita', '/participate',
-    ...research.map((item) => `/research/${item.slug}`),
-    ...regions.map((item) => `/regions/${item.slug}`),
-    ...topics.map((item) => `/topics/${item.slug}`),
-    ...projects.map((item) => `/projects/${item.slug}`),
-  ].map((path) => ({ url: `${baseUrl}${path}`, lastModified: new Date('2025-09-07') }))
+    ...staticRoutes.map((path) => ({ url: absoluteUrl(path) })),
+    ...research.map((item) => ({ url: absoluteUrl(`/research/${item.slug}`), lastModified: new Date(item.updated) })),
+    ...regions.map((item) => ({ url: absoluteUrl(`/regions/${item.slug}`) })),
+    ...topics.map((item) => ({ url: absoluteUrl(`/topics/${item.slug}`) })),
+    ...projects.map((item) => ({ url: absoluteUrl(`/projects/${item.slug}`) })),
+  ]
 }
