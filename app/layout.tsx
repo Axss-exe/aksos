@@ -36,14 +36,17 @@ export const metadata: Metadata = {
         url: '/icon-light-32x32.png',
         media: '(prefers-color-scheme: light)',
         type: 'image/png',
+        sizes: '32x32',
       },
       {
         url: '/icon-dark-32x32.png',
         media: '(prefers-color-scheme: dark)',
         type: 'image/png',
+        sizes: '32x32',
       },
     ],
-    apple: '/icon-dark-32x32.png',
+    shortcut: '/icon-light-32x32.png',
+    apple: '/aksos-symbol.svg',
   },
 }
 
