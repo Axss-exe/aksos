@@ -20,6 +20,7 @@ export function KnowledgeSearch() {
     if (type === 'research') return `/research/${slug}`
     if (type === 'topic') return `/topics/${slug}`
     if (type === 'region') return `/regions/${slug}`
+    if (type === 'about') return '/about'
     return `/projects/${slug}`
   }
 

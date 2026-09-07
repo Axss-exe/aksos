@@ -9,7 +9,8 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'ATIS — AKSOS',
   description:
-    'ATIS is the applied intelligence platform built on AKSOS, running at atis.aksos.net.',
+    'ATIS is an applied intelligence system being developed by AKSOS for investigating complex environments.',
+  alternates: { canonical: 'https://aksos.net/atis' },
 }
 
 const WORKFLOWS = [
@@ -52,10 +53,11 @@ export default function AtisPage() {
                 </Reveal>
                 <Reveal delay={200}>
                   <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
-                    ATIS is the applied intelligence platform built on the AKSOS operating
-                    environment. It is a live product — not a showcase — used by analysts and
-                    institutions to turn scattered signal into a structured, sourced, and
-                    defensible answer. RITA runs underneath every result it returns.
+                    ATIS is an applied intelligence system being developed by AKSOS. It explores
+                    how scattered signal can become a structured, sourced, and inspectable answer
+                    for people working in complex environments. RITA is an internal research
+                    concept that informs the standards we are exploring; it is not a separate
+                    product or a guarantee about every result.
                   </p>
                 </Reveal>
                 <Reveal delay={300}>
@@ -110,11 +112,11 @@ export default function AtisPage() {
                 Underneath
               </p>
               <h2 className="mt-6 text-balance font-serif text-3xl font-light leading-tight text-foreground md:text-4xl">
-                Every result in ATIS is answerable to RITA.
+                ATIS is being developed around questions of reasoning and traceability.
               </h2>
               <p className="mt-6 text-pretty text-lg leading-relaxed text-muted-foreground">
-                ATIS does not generate conclusions on its own authority. Each one is checked,
-                sourced, and scored by RITA before it ever reaches a screen.
+                The system is being developed to make sources, relationships, uncertainty, and
+                analytical choices easier to inspect rather than hiding them behind a conclusion.
               </p>
               <Link
                 href="/rita"

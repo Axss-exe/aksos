@@ -1,10 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { SiteFooter } from '@/components/site-footer'
+import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/site-config'
 import { SiteHeader } from '@/components/site-header'
 
 const HEADSHOT_URL = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bnw%20headshot-HyAFeyny9huyy7USylb5BN2myAe3A3.jpg'
 const tinoLinkedInUrl = process.env.NEXT_PUBLIC_TINO_LINKEDIN_URL
+
+export const metadata: Metadata = {
+  title: 'About AKSOS — Researching connected intelligence',
+  description: 'AKSOS is an independent research and systems-building initiative founded by Tino Makiriyado.',
+  alternates: { canonical: `${SITE_URL}/about` },
+}
 
 function Label({ children }: { children: React.ReactNode }) {
   return <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">{children}</p>

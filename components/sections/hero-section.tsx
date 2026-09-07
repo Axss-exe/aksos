@@ -18,7 +18,7 @@ export function HeroSection() {
           WHAT&apos;S BENEATH COMPLEXITY?
         </h1>
         <p className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-          There is rarely a shortage of information. The difficult part is understanding what belongs together. A company announces an investment. A regulation changes. A ministry publishes a decision. A bank finances a project. A new supplier appears. A market responds. Each event can be understood on its own. The more difficult question is what becomes visible when they are understood together. AKSOS is researching what becomes possible when those relationships are made visible.
+          AKSOS is an independent research and systems-building initiative founded by Tino Makiriyado. There is rarely a shortage of information. The difficult part is understanding what belongs together. A company announces an investment. A regulation changes. A ministry publishes a decision. A bank finances a project. A new supplier appears. A market responds. Each event can be understood on its own. The more difficult question is what becomes visible when they are understood together. AKSOS is researching what becomes possible when those relationships are made visible.
         </p>
 
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">

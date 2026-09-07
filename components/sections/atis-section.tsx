@@ -39,10 +39,7 @@ export function AtisSection() {
             </Reveal>
             <Reveal delay={300}>
               <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-                ATIS is not intended to collect more information for its own sake. It is being built to make it easier to investigate what the information means when the pieces are considered together.
-
-                
-                <span className="font-mono text-foreground">atis.aksos.net</span>.
+                ATIS is not intended to collect more information for its own sake. It is being built to make it easier to investigate what the information means when the pieces are considered together. It runs at <span className="font-mono text-foreground">atis.aksos.net</span>.
               </p>
             </Reveal>
             <Reveal delay={400}>
