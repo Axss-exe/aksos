@@ -25,6 +25,9 @@ export function SiteFooter() {
               <Link href="/rita" className="hover:text-foreground">
                 RITA
               </Link>
+              <Link href="/research" className="hover:text-foreground">
+                Frontier
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
               <span className="text-foreground/70">Site</span>
