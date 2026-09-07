@@ -4,10 +4,10 @@ AKSOS researches and prototypes systems that make complex environments easier to
 
 ## Knowledge layer
 
-- Research index: https://aksos.org/research
-- Regions: https://aksos.org/regions
-- Projects: https://aksos.org/projects
-- About: https://aksos.org/about
+- Research index: https://aksos.net/research
+- Regions: https://aksos.net/regions
+- Projects: https://aksos.net/projects
+- About: https://aksos.net/about
 
 ## Research principles
 
@@ -15,7 +15,7 @@ Research pages distinguish source-backed evidence from AKSOS analysis and disclo
 
 ## Primary research questions
 
-- Zimbabwe's approach to national AI strategy: https://aksos.org/research/zimbabwe-ai-strategy
-- Current landscape of AI development and adoption across Africa: https://aksos.org/research/african-ai-landscape
-- Barriers and opportunities for digital transformation in Zimbabwe: https://aksos.org/research/zimbabwe-digital-transformation
-- Emerging governance frameworks for AI in developing regions: https://aksos.org/research/ai-governance-frameworks
+- Zimbabwe's approach to national AI strategy: https://aksos.net/research/zimbabwe-ai-strategy
+- Current landscape of AI development and adoption across Africa: https://aksos.net/research/african-ai-landscape
+- Barriers and opportunities for digital transformation in Zimbabwe: https://aksos.net/research/zimbabwe-digital-transformation
+- Emerging governance frameworks for AI in developing regions: https://aksos.net/research/ai-governance-frameworks

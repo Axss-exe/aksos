@@ -125,8 +125,8 @@ export const regions: Region[] = [
 ]
 
 export const projects: Project[] = [
-  { id: 'atis', slug: 'atis', name: 'ATIS: AI Transparency for Intelligence Systems', description: 'Understanding intelligence systems, their connections, and participation pathways.', researchQuestions: ['How can environments with high information density become easier to understand?', 'What participation pathways exist for stakeholders in intelligence systems?'], relatedResearch: [] },
-  { id: 'batana', slug: 'batana', name: 'Batana: Building Bridges', description: 'Connecting African institutions, researchers, and practitioners in AI development.', researchQuestions: ['How can Africa-focused AI research be made more discoverable and actionable?', 'What institutional bridges enable collaboration across the continent?'], relatedResearch: ['ai-research-innovation-africa', 'digital-skills-ai-capacity'] },
+  { id: 'atis', slug: 'atis', name: 'ATIS', description: 'An environment-understanding and intelligence system that helps actors see, understand, orient and decide in complex environments.', researchQuestions: ['How can environments with high information density become easier to understand?', 'What participation pathways exist for stakeholders in intelligence systems?'], relatedResearch: [] },
+  { id: 'batana', slug: 'batana', name: 'Batana', description: 'A participation layer for discoverability, connection and contribution.', researchQuestions: ['How can Africa-focused AI research be made more discoverable and actionable?', 'What institutional bridges enable collaboration across the continent?'], relatedResearch: ['ai-research-innovation-africa', 'digital-skills-ai-capacity'] },
 ]
 
 export const entities: Entity[] = [
