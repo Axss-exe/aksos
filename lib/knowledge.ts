@@ -161,10 +161,12 @@ export const research: Research[] = [
 
 export function buildSearchIndex() {
   const index: Array<{ id: string; slug: string; type: string; title: string; text: string; region?: string; topic?: string }> = []
-  research.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'research', title: item.title ?? item.question, text: [item.title, item.question, item.directAnswer, item.description, item.topics.join(' '), item.regions.join(' '), item.entities.map((e) => e.name).join(' ')].join(' ').toLowerCase(), region: item.regions[0], topic: item.topics[0] }))
-  topics.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'topic', title: item.name, text: `${item.name} ${item.description} ${item.relatedResearch.join(' ')}`.toLowerCase() }))
-  regions.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'region', title: item.name, text: `${item.name} ${item.description} ${item.context} ${item.relatedResearch.join(' ')}`.toLowerCase() }))
-  projects.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'project', title: item.name, text: `${item.name} ${item.description} ${item.researchQuestions.join(' ')}`.toLowerCase() }))
+  research.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'research', title: item.title ?? item.question, text: [item.title, item.question, item.description, item.directAnswer, item.whyItMatters, item.landscape, item.evidence, item.analysis, item.limitations, item.relatedQuestions.join(' '), item.relatedResearch?.join(' '), item.projects.join(' '), item.topics.join(' '), item.regions.join(' '), item.entities.map((e) => `${e.name} ${e.description}`).join(' '), item.sources.map((source) => `${source.title} ${source.organization}`).join(' ')].join(' ').toLowerCase(), region: item.regions[0], topic: item.topics[0] }))
+  topics.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'topic', title: item.name, text: `${item.name} ${item.description} ${item.relatedResearch.join(' ')} ${item.regions?.join(' ')} ${item.entities?.join(' ')} ${item.relatedTopics?.join(' ')}`.toLowerCase() }))
+  regions.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'region', title: item.name, text: `${item.name} ${item.description} ${item.context} ${item.relatedResearch.join(' ')} ${item.relatedRegions?.join(' ')}`.toLowerCase() }))
+  projects.forEach((item) => index.push({ id: item.id, slug: item.slug, type: 'project', title: item.name, text: `${item.name} ${item.description} ${item.researchQuestions.join(' ')} ${item.relatedResearch.join(' ')}`.toLowerCase() }))
+  index.push({ id: 'aksos', slug: 'about', type: 'about', title: 'AKSOS', text: 'aksos independent research systems-building initiative founded by Tino Makiriyado connected intelligence complex environments Africa Zimbabwe ATIS Batana FRONTIER research' })
+  index.push({ id: 'tino-makiriyado', slug: 'about', type: 'about', title: 'Tino Makiriyado', text: 'Tino Makiriyado founder of AKSOS CIVA ACTIVE Ministry Zimbabwe Africa research systems intelligence' })
   return index
 }
 

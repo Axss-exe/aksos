@@ -19,8 +19,17 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'AKSOS — See the environment. Participate in it.',
   description:
-    'AKSOS researches and builds systems that make complex environments easier to see, understand and participate in.',
+    'AKSOS is an independent research and systems-building initiative founded by Tino Makiriyado, exploring how complex environments become easier to see, understand, and participate in.',
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: SITE_URL },
   generator: 'v0.app',
+  openGraph: {
+    type: 'website',
+    siteName: 'AKSOS',
+    title: 'AKSOS — See the environment. Participate in it.',
+    description: 'Independent research and systems-building for understanding complex environments.',
+    url: SITE_URL,
+  },
   icons: {
     icon: [
       {
@@ -60,7 +69,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@graph': [
-                { '@type': 'Organization', name: 'AKSOS', url: SITE_URL },
+                { '@type': 'Organization', name: 'AKSOS', url: SITE_URL, description: 'Independent research and systems-building initiative founded by Tino Makiriyado.', founder: { '@type': 'Person', name: 'Tino Makiriyado', url: `${SITE_URL}/about` }, sameAs: ['https://aksos.net'] },
+                { '@type': 'Person', name: 'Tino Makiriyado', url: `${SITE_URL}/about`, founderOf: { '@type': 'Organization', name: 'AKSOS', url: SITE_URL } },
                 { '@type': 'WebSite', name: 'AKSOS', url: SITE_URL, potentialAction: { '@type': 'SearchAction', target: `${SITE_URL}/research?q={search_term_string}`, 'query-input': 'required name=search_term_string' } },
               ],
             }),

@@ -29,10 +29,10 @@ export function RitaSection() {
         </Reveal>
         <Reveal delay={200}>
           <p className="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
-            RITA — AKSOS's Reasoning &amp; Integrity engine — is not a separate product. It is
-            the internal layer that sits beneath ATIS and gives every output inside it a reason,
-            a source, and a way to be checked. Where ATIS is what you see, RITA is why you can
-            trust what you're seeing.
+            RITA is an internal research concept for thinking about reasoning, integrity, and
+            traceability in intelligence systems. It is not a separate product or a claim that
+            every ATIS output has already been independently verified. Where ATIS is the visible
+            environment, RITA names the standards we are exploring underneath it.
           </p>
         </Reveal>
 
